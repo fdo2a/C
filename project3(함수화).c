@@ -7,7 +7,7 @@ int s0 = 0;
 int s1 = 0;
 int s2 = 0;
 int s3 = 0;
-int	s4 = 0;	
+int s4 = 0;	
 void printOptions() {
 	printf("1--좌석 확인하기\n");
 	printf("2--예약하기\n");
