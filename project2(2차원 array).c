@@ -1,6 +1,6 @@
 #include <stdio.h>
-#define ROWS 3 //Çà(°¡·Î)
-#define COLS 5 //¿­(¼¼·Î)
+#define ROWS 3 //í–‰(ê°€ë¡œ)
+#define COLS 5 //ì—´(ì„¸ë¡œ)
 void printOptions();
 int print_seats(int s_array[][COLS]);
 int reserve(int s_array[][COLS],int row, int col);
@@ -14,26 +14,26 @@ int main(void)
 	int select = 0;
 	while (1) {
 		printOptions();
-		printf("¸Ş´º¸¦ ¼±ÅÃÇÏ¼¼¿ä :");
+		printf("ë©”ë‰´ë¥¼ ì„ íƒí•˜ì„¸ìš” :");
 		scanf_s("%d", &select);
 		if (select == 4) {
-			printf("ÀÌ¿ëÇØÁÖ¼Å¼­ °¨»çÇÕ´Ï´Ù.\n");
+			printf("ì´ìš©í•´ì£¼ì…”ì„œ ê°ì‚¬í•©ë‹ˆë‹¤.\n");
 			break;
-		}//Á¾·áÇÏ±â
+		}//ì¢…ë£Œí•˜ê¸°
 		else if (select == 1) {
-			printf("ÁÂ¼® È®ÀÎÇÏ±â\n");
+			printf("ì¢Œì„ í™•ì¸í•˜ê¸°\n");
 			print_seats(seats);
 			printf("\n");
 		}
 		else if (select == 2) {
-			printf("¿¹¾àÀ» ¿øÇÏ´Â ÀÚ¸®´Â?(Çà, ¿­) :");
+			printf("ì˜ˆì•½ì„ ì›í•˜ëŠ” ìë¦¬ëŠ”?(í–‰, ì—´) :");
 			scanf_s("%d %d", &row,&col);
 			reserve(seats,row,col);
 			print_seats(seats);
 			printf("\n");
 		}
 		else if (select == 3) {
-			printf("¿¹¾à Ãë¼Ò¸¦ ¿øÇÏ´Â ÀÚ¸®´Â? (Çà, ¿­) :");
+			printf("ì˜ˆì•½ ì·¨ì†Œë¥¼ ì›í•˜ëŠ” ìë¦¬ëŠ”? (í–‰, ì—´) :");
 			scanf_s("%d %d", &row, &col);
 			cancel(seats,row,col);
 			print_seats(seats);
@@ -44,10 +44,10 @@ int main(void)
 }
 
 void printOptions() {
-	printf("1--ÁÂ¼® È®ÀÎÇÏ±â\n");
-	printf("2--¿¹¾àÇÏ±â\n");
-	printf("3--¿¹¾àÃë¼ÒÇÏ±â\n");
-	printf("4--Á¾·áÇÏ±â\n");
+	printf("1--ì¢Œì„ í™•ì¸í•˜ê¸°\n");
+	printf("2--ì˜ˆì•½í•˜ê¸°\n");
+	printf("3--ì˜ˆì•½ì·¨ì†Œí•˜ê¸°\n");
+	printf("4--ì¢…ë£Œí•˜ê¸°\n");
 }
 int print_seats(int seats_array[][COLS]) {
 	int i, j;
@@ -64,22 +64,22 @@ int print_seats(int seats_array[][COLS]) {
 }
 int reserve(int seats_array[][COLS], int row, int col) {
 	if (seats_array[row][col] == 1) {
-		printf("ÀÌ¹Ì ¿¹¾àµÈ ÀÚ¸®ÀÔ´Ï´Ù.\n");
+		printf("ì´ë¯¸ ì˜ˆì•½ëœ ìë¦¬ì…ë‹ˆë‹¤.\n");
 		return -1;
 		}
 	else {
-		printf("¿¹¾à ¿Ï·á\n");
+		printf("ì˜ˆì•½ ì™„ë£Œ\n");
 		seats_array[row][col] = 1;
 		return seats_array[row][col];
 		}
 }
 int cancel(int seats_array[][COLS], int row, int col) {
 	if (seats_array[row][col] == 0) {
-		printf("¿¹¾àµÇÁö ¾ÊÀº ÀÚ¸®ÀÔ´Ï´Ù.\n");
+		printf("ì˜ˆì•½ë˜ì§€ ì•Šì€ ìë¦¬ì…ë‹ˆë‹¤.\n");
 		return -1;
 	}
 	else {
-		printf("¿¡¾à Ãë¼ÒµÇ¾ú½À´Ï´Ù.\n");
+		printf("ì—ì•½ ì·¨ì†Œë˜ì—ˆìŠµë‹ˆë‹¤.\n");
 		seats_array[row][col] = 0;
 		return seats_array[row][col];
 	}
