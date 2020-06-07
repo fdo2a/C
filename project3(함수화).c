@@ -8,18 +8,57 @@ int s1 = 0;
 int s2 = 0;
 int s3 = 0;
 int s4 = 0;	
+void printOptions();
+int print_seats();
+int reserve(int ticket) ;
+int cancel(int ticket);
+	
+int main(void)
+{
+	int ticket = 0;
+	int select = 0;
+	while (1) {
+		printOptions();
+		printf("메뉴를 선택하세요 :");
+		scanf_s("%d", &select);
+		if (select == 4) {
+			printf("이용해주셔서 감사합니다.\n");
+			break;
+		}//종료하기
+		else if (select == 1) {
+			printf("좌석 확인하기\n");
+			print_seats();
+		}//좌석확인하기
+		else if (select == 2) {
+			printf("예약을 원하는 자리는? :");
+			scanf_s("%d", &ticket);
+			reserve(ticket);
+			print_seats();
+		}
+		else if (select == 3) {
+			printf("예약 취소를 원하는 자리는? :");
+			scanf_s("%d", &ticket);
+			cancel(ticket);
+			print_seats();
+		}
+	}
+	return 0;
+}
+
 void printOptions() {
 	printf("1--좌석 확인하기\n");
 	printf("2--예약하기\n");
 	printf("3--예약취소하기\n");
 	printf("4--종료하기\n");
 }
+
 int print_seats() {
 	printf("0 1 2 3 4\n");
 	printf("---------\n");
 	printf("%d %d %d %d %d\n\n", s0, s1, s2, s3, s4);
 	return 0;
 }
+
 int reserve(int ticket) {
 		if (ticket == 0) 
 			if (s0 == 1) {
@@ -74,6 +113,7 @@ int reserve(int ticket) {
 			}
 		return -1;
 	}
+
 int cancel(int ticket) {
 	if (ticket == 0) {
 		if (s0 == 1) {
@@ -135,36 +175,4 @@ int cancel(int ticket) {
 		print_seats();
 	}
 	return -1;
-}
-	
-int main(void)
-{
-	int ticket = 0;
-	int select = 0;
-	while (1) {
-		printOptions();
-		printf("메뉴를 선택하세요 :");
-		scanf_s("%d", &select);
-		if (select == 4) {
-			printf("이용해주셔서 감사합니다.\n");
-			break;
-		}//종료하기
-		else if (select == 1) {
-			printf("좌석 확인하기\n");
-			print_seats();
-		}//좌석확인하기
-		else if (select == 2) {
-			printf("예약을 원하는 자리는? :");
-			scanf_s("%d", &ticket);
-			reserve(ticket);
-			print_seats();
-		}
-		else if (select == 3) {
-			printf("예약 취소를 원하는 자리는? :");
-			scanf_s("%d", &ticket);
-			cancel(ticket);
-			print_seats();
-		}
-	}
-	return 0;
 }
