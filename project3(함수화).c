@@ -9,10 +9,10 @@ int s2 = 0;
 int s3 = 0;
 int	s4 = 0;	
 void printOptions() {
-	printf("1--ÁÂ¼® È®ÀÎÇÏ±â\n");
-	printf("2--¿¹¾àÇÏ±â\n");
-	printf("3--¿¹¾àÃë¼ÒÇÏ±â\n");
-	printf("4--Á¾·áÇÏ±â\n");
+	printf("1--ì¢Œì„ í™•ì¸í•˜ê¸°\n");
+	printf("2--ì˜ˆì•½í•˜ê¸°\n");
+	printf("3--ì˜ˆì•½ì·¨ì†Œí•˜ê¸°\n");
+	printf("4--ì¢…ë£Œí•˜ê¸°\n");
 }
 int print_seats() {
 	printf("0 1 2 3 4\n");
@@ -23,52 +23,52 @@ int print_seats() {
 int reserve(int ticket) {
 		if (ticket == 0) 
 			if (s0 == 1) {
-				printf("ÀÌ¹Ì ¿¹¾àµÈ ÀÚ¸®ÀÔ´Ï´Ù.\n");
+				printf("ì´ë¯¸ ì˜ˆì•½ëœ ìë¦¬ì…ë‹ˆë‹¤.\n");
 				return -1;
 			}
 			else {
-				printf("¿¹¾à ¿Ï·á\n");
+				printf("ì˜ˆì•½ ì™„ë£Œ\n");
 				s0 = 1;
 				return s0;
 			}
 		else if (ticket == 1)
 			if (s1 == 1) {
-				printf("ÀÌ¹Ì ¿¹¾àµÈ ÀÚ¸®ÀÔ´Ï´Ù.\n");
+				printf("ì´ë¯¸ ì˜ˆì•½ëœ ìë¦¬ì…ë‹ˆë‹¤.\n");
 				return -1;
 			}
 			else {
-				printf("¿¹¾à¿Ï·á\n");
+				printf("ì˜ˆì•½ì™„ë£Œ\n");
 				s1 = 1;
 				return s1;
 			}
 		else if (ticket == 2) 
 			if (s2 == 1) {
-				printf("ÀÌ¹Ì ¿¹¾àµÈ ÀÚ¸®ÀÔ´Ï´Ù.\n");
+				printf("ì´ë¯¸ ì˜ˆì•½ëœ ìë¦¬ì…ë‹ˆë‹¤.\n");
 				return -1;
 			}
 			else {
-				printf("¿¹¾à¿Ï·á\n");
+				printf("ì˜ˆì•½ì™„ë£Œ\n");
 				s2 = 1;
 				return s2;
 			}
 		
 		else if (ticket == 3)
 			if (s3 == 1) {
-				printf("ÀÌ¹Ì ¿¹¾àµÈ ÀÚ¸®ÀÔ´Ï´Ù.\n");
+				printf("ì´ë¯¸ ì˜ˆì•½ëœ ìë¦¬ì…ë‹ˆë‹¤.\n");
 				return -1;
 			}
 			else {
-				printf("¿¹¾à¿Ï·á\n");
+				printf("ì˜ˆì•½ì™„ë£Œ\n");
 				s3 = 1;
 				return s3;
 			}
 		else if (ticket == 4)
 			if (s4 == 1) {
-				printf("ÀÌ¹Ì ¿¹¾àµÈ ÀÚ¸®ÀÔ´Ï´Ù.\n");
+				printf("ì´ë¯¸ ì˜ˆì•½ëœ ìë¦¬ì…ë‹ˆë‹¤.\n");
 				return -1;
 			}
 			else {
-				printf("¿¹¾à¿Ï·á\n");
+				printf("ì˜ˆì•½ì™„ë£Œ\n");
 				s4 = 1;
 				return s4;
 			}
@@ -77,59 +77,59 @@ int reserve(int ticket) {
 int cancel(int ticket) {
 	if (ticket == 0) {
 		if (s0 == 1) {
-			printf("¿¹¾àÃë¼Ò°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù.\n");
+			printf("ì˜ˆì•½ì·¨ì†Œê°€ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.\n");
 			s0 = 0;
 			return s0;
 		}
 		else
 		{
-			printf("¿¹¾àµÇÁö ¾ÊÀº ÀÚ¸®ÀÔ´Ï´Ù.");
+			printf("ì˜ˆì•½ë˜ì§€ ì•Šì€ ìë¦¬ì…ë‹ˆë‹¤.");
 			return -1;
 		}
 	}
 	else if (ticket == 1) {
 		if (s1 == 1) {
-			printf("¿¹¾àÃë¼Ò°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù.\n");
+			printf("ì˜ˆì•½ì·¨ì†Œê°€ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.\n");
 			s1 = 0;
 			return s1;
 		}
 		else{
-			printf("¿¹¾àµÇÁö ¾ÊÀº ÀÚ¸®ÀÔ´Ï´Ù.");
+			printf("ì˜ˆì•½ë˜ì§€ ì•Šì€ ìë¦¬ì…ë‹ˆë‹¤.");
 			return -1;
 		}
 	}
 	else if (ticket == 2) {
 		if (s2 == 1) {
-			printf("¿¹¾àÃë¼Ò°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù.\n");
+			printf("ì˜ˆì•½ì·¨ì†Œê°€ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.\n");
 			s2 = 0;
 			return s2;
 		}
 		else
 		{
-			printf("¿¹¾àµÇÁö ¾ÊÀº ÀÚ¸®ÀÔ´Ï´Ù.\n");
+			printf("ì˜ˆì•½ë˜ì§€ ì•Šì€ ìë¦¬ì…ë‹ˆë‹¤.\n");
 			return -1;
 		}
 	}
 	else if (ticket == 3) {
 		if (s3 == 1) {
-			printf("¿¹¾àÃë¼Ò°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù.\n");
+			printf("ì˜ˆì•½ì·¨ì†Œê°€ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.\n");
 			s3 = 0;
 			return s3;
 		}
 		else
 		{
-			printf("¿¹¾àµÇÁö ¾ÊÀº ÀÚ¸®ÀÔ´Ï´Ù.\n");
+			printf("ì˜ˆì•½ë˜ì§€ ì•Šì€ ìë¦¬ì…ë‹ˆë‹¤.\n");
 			return -1;
 		}
 	}
 	else if (ticket == 4) {
 		if (s4 == 1) {
-			printf("¿¹¾àÃë¼Ò°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù.\n");
+			printf("ì˜ˆì•½ì·¨ì†Œê°€ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.\n");
 			s4 = 0;
 			return s4;
 		}
 		else {
-			printf("¿¹¾àµÇÁö ¾ÊÀº ÀÚ¸®ÀÔ´Ï´Ù.\n");
+			printf("ì˜ˆì•½ë˜ì§€ ì•Šì€ ìë¦¬ì…ë‹ˆë‹¤.\n");
 			return -1;
 		}
 		print_seats();
@@ -143,24 +143,24 @@ int main(void)
 	int select = 0;
 	while (1) {
 		printOptions();
-		printf("¸Ş´º¸¦ ¼±ÅÃÇÏ¼¼¿ä :");
+		printf("ë©”ë‰´ë¥¼ ì„ íƒí•˜ì„¸ìš” :");
 		scanf_s("%d", &select);
 		if (select == 4) {
-			printf("ÀÌ¿ëÇØÁÖ¼Å¼­ °¨»çÇÕ´Ï´Ù.\n");
+			printf("ì´ìš©í•´ì£¼ì…”ì„œ ê°ì‚¬í•©ë‹ˆë‹¤.\n");
 			break;
-		}//Á¾·áÇÏ±â
+		}//ì¢…ë£Œí•˜ê¸°
 		else if (select == 1) {
-			printf("ÁÂ¼® È®ÀÎÇÏ±â\n");
+			printf("ì¢Œì„ í™•ì¸í•˜ê¸°\n");
 			print_seats();
-		}//ÁÂ¼®È®ÀÎÇÏ±â
+		}//ì¢Œì„í™•ì¸í•˜ê¸°
 		else if (select == 2) {
-			printf("¿¹¾àÀ» ¿øÇÏ´Â ÀÚ¸®´Â? :");
+			printf("ì˜ˆì•½ì„ ì›í•˜ëŠ” ìë¦¬ëŠ”? :");
 			scanf_s("%d", &ticket);
 			reserve(ticket);
 			print_seats();
 		}
 		else if (select == 3) {
-			printf("¿¹¾à Ãë¼Ò¸¦ ¿øÇÏ´Â ÀÚ¸®´Â? :");
+			printf("ì˜ˆì•½ ì·¨ì†Œë¥¼ ì›í•˜ëŠ” ìë¦¬ëŠ”? :");
 			scanf_s("%d", &ticket);
 			cancel(ticket);
 			print_seats();
