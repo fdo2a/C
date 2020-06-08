@@ -1,16 +1,16 @@
 #include <stdio.h>
 #include <string.h>
-#define ROWS 3 //Çà(°¡·Î)
-#define COLS 5 //¿­(¼¼·Î)
-#define SIZE 10 // È¸¿ø ¼ö
+#define ROWS 3 //í–‰(ê°€ë¡œ)
+#define COLS 5 //ì—´(ì„¸ë¡œ)
+#define SIZE 10 // íšŒì› ìˆ˜
 typedef struct user_info {
-	int id_num;		//È¸¿ø¹øÈ£
-	char id[SIZE];	//È¸¿ø ¾ÆÀÌµğ. 10ÀÚ ÀÌ³», È¸¿ø¹øÈ£¿Í º°µµ
-	char password[SIZE];	//10ÀÚ ÀÌ³»
+	int id_num;		//íšŒì›ë²ˆí˜¸
+	char id[SIZE];	//íšŒì› ì•„ì´ë””. 10ì ì´ë‚´, íšŒì›ë²ˆí˜¸ì™€ ë³„ë„
+	char password[SIZE];	//10ì ì´ë‚´
 }INFO;
 void printOptions();
 int print_seats(int s_array[][COLS]);
-int reserve(int s_array[][COLS], char row, int col,int id_num);
+int reserve(int s_array[][COLS], char row, int col, int id_num);
 int cancel(int s_array[][COLS], char row, int col, int id_num);
 int load_user_info(INFO user[], int size);
 int check_login(INFO user[], char id[], char passwd[]);
@@ -24,45 +24,46 @@ int main(void)
 	int select = 0;
 	int c;
 	char input_id[10];
-	char input_password[10];	
-	
+	char input_password[10];
+
 	INFO user[SIZE];
-	
-	load_user_info(user,SIZE);
+
+	load_user_info(user, SIZE);
 	while (1) {
-		printf("·Î±×ÀÎÀ» ÇÏ¼¼¿ä.\n");
+		printf("ë¡œê·¸ì¸ì„ í•˜ì„¸ìš”.\n");
 		printf("id_num : ");
 		scanf("%s", input_id);
+		while ((c = getchar()) != '\n' && (c != EOF)) {};
 		printf("password : ");
 		scanf("%s", input_password);
-		if (check_login(user,input_id,input_password)>=0)
+		if (check_login(user, input_id, input_password) >= 0)
 			break;
-		}
+	}
 	int num = binary_search(user, SIZE, input_id);
 	while (1) {
 		printOptions();
-		printf("¸Ş´º¸¦ ¼±ÅÃÇÏ¼¼¿ä :");
+		printf("ë©”ë‰´ë¥¼ ì„ íƒí•˜ì„¸ìš” :");
 		scanf_s("%d", &select);
 		while ((c = getchar()) != '\n' && (c != EOF)) {};
 		if (select == 4) {
-			printf("ÀÌ¿ëÇØÁÖ¼Å¼­ °¨»çÇÕ´Ï´Ù.\n");
+			printf("ì´ìš©í•´ì£¼ì…”ì„œ ê°ì‚¬í•©ë‹ˆë‹¤.\n");
 			break;
-		}//Á¾·áÇÏ±â
+		}//ì¢…ë£Œí•˜ê¸°
 		else if (select == 1) {
-			printf("ÁÂ¼® È®ÀÎÇÏ±â\n");
+			printf("ì¢Œì„ í™•ì¸í•˜ê¸°\n");
 			print_seats(seats);
 			printf("\n");
 		}
 		else if (select == 2) {
-			printf("¿¹¾àÀ» ¿øÇÏ´Â ÀÚ¸®´Â?(Çà, ¿­) :");
+			printf("ì˜ˆì•½ì„ ì›í•˜ëŠ” ìë¦¬ëŠ”?(í–‰, ì—´) :");
 			scanf("%c %d", &row, &col);
 			while ((c = getchar()) != '\n' && (c != EOF)) {}
-			reserve(seats,row,col,user[num].id_num);
+			reserve(seats, row, col, user[num].id_num);
 			print_seats(seats);
 			printf("\n");
 		}
 		else if (select == 3) {
-			printf("¿¹¾à Ãë¼Ò¸¦ ¿øÇÏ´Â ÀÚ¸®´Â? (Çà, ¿­) :");
+			printf("ì˜ˆì•½ ì·¨ì†Œë¥¼ ì›í•˜ëŠ” ìë¦¬ëŠ”? (í–‰, ì—´) :");
 			scanf("%c %d", &row, &col);
 			while ((c = getchar()) != '\n' && (c != EOF)) {};
 			cancel(seats, row, col, user[num].id_num);
@@ -72,12 +73,12 @@ int main(void)
 	}
 	return 0;
 }
-	
+
 void printOptions() {
-	printf("1--ÁÂ¼® È®ÀÎÇÏ±â\n");
-	printf("2--¿¹¾àÇÏ±â\n");
-	printf("3--¿¹¾àÃë¼ÒÇÏ±â\n");
-	printf("4--Á¾·áÇÏ±â\n");
+	printf("1--ì¢Œì„ í™•ì¸í•˜ê¸°\n");
+	printf("2--ì˜ˆì•½í•˜ê¸°\n");
+	printf("3--ì˜ˆì•½ì·¨ì†Œí•˜ê¸°\n");
+	printf("4--ì¢…ë£Œí•˜ê¸°\n");
 }
 int print_seats(int seats_array[][COLS]) {
 	char i;
@@ -87,36 +88,36 @@ int print_seats(int seats_array[][COLS]) {
 	for (i = 65; i < 68; i++) {
 		printf("%c |", i);
 		for (j = 0; j < 5; j++) {
-			printf("%4d", seats_array[i][j]);
+			printf("%4d", seats_array[i-65][j]);
 		}
 		printf("\n");
 	}
 	return 0;
 }
-int reserve(int seats_array[][COLS], char row, int col,int id_num) {
-	if (seats_array[row][col] == id_num) {
-		printf("ÀÌ¹Ì ¿¹¾àµÈ ÀÚ¸®ÀÔ´Ï´Ù.\n\n");
+int reserve(int seats_array[][COLS], char row, int col, int id_num) {
+	if (seats_array[row-65][col] == id_num) {
+		printf("ì´ë¯¸ ì˜ˆì•½ëœ ìë¦¬ì…ë‹ˆë‹¤.\n\n");
 		return -1;
-		}
+	}
 	else {
-		printf("¿¹¾à ¿Ï·á\n\n");
-		seats_array[row][col] = id_num;
-		return seats_array[row][col];
-		}
+		printf("ì˜ˆì•½ ì™„ë£Œ\n\n");
+		seats_array[row-65][col] = id_num;
+		return seats_array[row-65][col];
+	}
 }
 int cancel(int seats_array[][COLS], char row, int col, int id_num) {
-	if (seats_array[row][col] == 0) {
-		printf("¿¹¾àµÇÁö ¾ÊÀº ÀÚ¸®ÀÔ´Ï´Ù.\n\n");
+	if (seats_array[row-65][col] == 0) {
+		printf("ì˜ˆì•½ë˜ì§€ ì•Šì€ ìë¦¬ì…ë‹ˆë‹¤.\n\n");
 		return -1;
 	}
-	else if (seats_array[row][col] != id_num) {
-		printf("´Ù¸¥ ¾ÆÀÌµğÀÇ ÁÂ¼®ÀÔ´Ï´Ù.\n\n");
+	else if (seats_array[row-65][col] != id_num) {
+		printf("ë‹¤ë¥¸ ì•„ì´ë””ì˜ ì¢Œì„ì…ë‹ˆë‹¤.\n\n");
 		return -1;
 	}
 	else {
-		printf("¿¡¾à Ãë¼ÒµÇ¾ú½À´Ï´Ù.\n\n");
-		seats_array[row][col] = 0;
-		return seats_array[row][col];
+		printf("ì—ì•½ ì·¨ì†Œë˜ì—ˆìŠµë‹ˆë‹¤.\n\n");
+		seats_array[row-65][col] = 0;
+		return seats_array[row-65][col];
 
 	}
 }
@@ -133,27 +134,27 @@ int check_login(INFO user[], char id[], char passwd[]) {
 	int value;
 	value = binary_search(user, SIZE, id);
 	if (value == -1) {
-		printf("ÇØ´ç ¾ÆÀÌµğ°¡ ¾ø½À´Ï´Ù.\n\n");
+		printf("í•´ë‹¹ ì•„ì´ë””ê°€ ì—†ìŠµë‹ˆë‹¤.\n\n");
 		return -1;
 	}
-	else if (strcmp(user[value].password, passwd)!=0) {
-		printf("ÇØ´ç ¾ÆÀÌµğ´Â Á¸ÀçÇÏ³ª ÆĞ½º¿öµå°¡ ´Ù¸§\n\n");
+	else if (strcmp(user[value].password, passwd) != 0) {
+		printf("í•´ë‹¹ ì•„ì´ë””ëŠ” ì¡´ì¬í•˜ë‚˜ íŒ¨ìŠ¤ì›Œë“œê°€ ë‹¤ë¦„\n\n");
 		return -2;
 	}
 	else {
-		printf("user%d´Ô ¹İ°©½À´Ï´Ù.\n\n", user[value].id_num);
+		printf("user%dë‹˜ ë°˜ê°‘ìŠµë‹ˆë‹¤.\n\n", user[value].id_num);
 		return user[value].id_num;
 	}
 }
-int binary_search(INFO user[],int n, char key[]) {
-;
+int binary_search(INFO user[], int n, char key[]) {
+	;
 	int low, middle, high, result;
 	low = 0;
 	high = n - 1;
 
 	while (low <= high) {
 		middle = (low + high) / 2;
-		result = strcmp(key ,user[middle].id);
+		result = strcmp(key, user[middle].id);
 		if (result == 0) {
 			key[10] = user[middle].id;
 			return middle;
@@ -162,7 +163,7 @@ int binary_search(INFO user[],int n, char key[]) {
 			low = middle + 1;
 		else
 			high = middle - 1;
-		}
-	return - 1;
-	
+	}
+	return -1;
+
 }
