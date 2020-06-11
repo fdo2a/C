@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#define ROWS 3 //Çà(°¡·Î)
-#define COLS 5 //¿­(¼¼·Î)
-#define SIZE 10 // È¸¿ø ¼ö
+#define ROWS 3 //í–‰(ê°€ë¡œ)
+#define COLS 5 //ì—´(ì„¸ë¡œ)
+#define SIZE 10 // íšŒì› ìˆ˜
 typedef struct user_info {
-	int id_num;		//È¸¿ø¹øÈ£
-	char id[SIZE];	//È¸¿ø ¾ÆÀÌµğ. 10ÀÚ ÀÌ³», È¸¿ø¹øÈ£¿Í º°µµ
-	char password[SIZE];	//10ÀÚ ÀÌ³»
+	int id_num;		//íšŒì›ë²ˆí˜¸
+	char id[SIZE];	//íšŒì› ì•„ì´ë””. 10ì ì´ë‚´, íšŒì›ë²ˆí˜¸ì™€ ë³„ë„
+	char password[SIZE];	//10ì ì´ë‚´
 }INFO;
 void printOptions();
 int load_user_info(INFO user[], int size);
@@ -36,7 +36,7 @@ int main(void)
 		if (load_user_info(user,SIZE) < 0)
 			exit(-1);
 	while (1) {
-		printf("·Î±×ÀÎÀ» ÇÏ¼¼¿ä.\n");
+		printf("ë¡œê·¸ì¸ì„ í•˜ì„¸ìš”.\n");
 		printf("id_num : ");
 		scanf("%s", input_id);
 		while ((c = getchar()) != '\n' && (c != EOF)) {};
@@ -49,21 +49,21 @@ int main(void)
 		int num = binary_search(user, SIZE, input_id);
 		load_reservation_info(seats);
 		printOptions();
-		printf("¸Ş´º¸¦ ¼±ÅÃÇÏ¼¼¿ä : ");
+		printf("ë©”ë‰´ë¥¼ ì„ íƒí•˜ì„¸ìš” : ");
 		scanf_s("%d", &select);
 		printf("\n");
 		while ((c = getchar()) != '\n' && (c != EOF)) {};
 		if (select == 5) {
-			printf("ÀÌ¿ëÇØÁÖ¼Å¼­ °¨»çÇÕ´Ï´Ù.\n");
+			printf("ì´ìš©í•´ì£¼ì…”ì„œ ê°ì‚¬í•©ë‹ˆë‹¤.\n");
 			break;
-		}//Á¾·áÇÏ±â
+		}//ì¢…ë£Œí•˜ê¸°
 		else if (select == 1) {
-			printf("ÁÂ¼® È®ÀÎÇÏ±â\n");
+			printf("ì¢Œì„ í™•ì¸í•˜ê¸°\n");
 			print_seats(seats);
 			printf("\n");
 		}
 		else if (select == 2) {
-			printf("¿¹¾àÀ» ¿øÇÏ´Â ÀÚ¸®´Â?(Çà, ¿­) :");
+			printf("ì˜ˆì•½ì„ ì›í•˜ëŠ” ìë¦¬ëŠ”?(í–‰, ì—´) :");
 			scanf("%c %d", &row, &col);
 			while ((c = getchar()) != '\n' && (c != EOF)) {}
 			reserve(seats, row, col, user[num].id_num);
@@ -72,7 +72,7 @@ int main(void)
 			printf("\n");
 		}
 		else if (select == 3) {
-			printf("¿¹¾à Ãë¼Ò¸¦ ¿øÇÏ´Â ÀÚ¸®´Â? (Çà, ¿­) :");
+			printf("ì˜ˆì•½ ì·¨ì†Œë¥¼ ì›í•˜ëŠ” ìë¦¬ëŠ”? (í–‰, ì—´) :");
 			scanf("%c %d", &row, &col);
 			while ((c = getchar()) != '\n' && (c != EOF)) {};
 			cancel(seats, row, col, user[num].id_num);
@@ -80,9 +80,9 @@ int main(void)
 			printf("\n");
 		}
 		else if (select == 4) {
-			printf("·Î±×¾Æ¿ô µÇ¾ú½À´Ï´Ù.\n");
+			printf("ë¡œê·¸ì•„ì›ƒ ë˜ì—ˆìŠµë‹ˆë‹¤.\n");
 			while (1) {
-				printf("·Î±×ÀÎÀ» ÇÏ¼¼¿ä.\n");
+				printf("ë¡œê·¸ì¸ì„ í•˜ì„¸ìš”.\n");
 				printf("id_num : ");
 				scanf("%s", input_id);
 				while ((c = getchar()) != '\n' && (c != EOF)) {};
@@ -97,11 +97,11 @@ int main(void)
 }
 
 void printOptions() {
-	printf("1--ÁÂ¼® È®ÀÎÇÏ±â\n");
-	printf("2--¿¹¾àÇÏ±â\n");
-	printf("3--¿¹¾àÃë¼ÒÇÏ±â\n");
-	printf("4--´Ù¸¥ »ç¿ëÀÚ·Î ·Î±×ÀÎÇÏ±â\n");
-	printf("5--Á¾·áÇÏ±â\n");
+	printf("1--ì¢Œì„ í™•ì¸í•˜ê¸°\n");
+	printf("2--ì˜ˆì•½í•˜ê¸°\n");
+	printf("3--ì˜ˆì•½ì·¨ì†Œí•˜ê¸°\n");
+	printf("4--ë‹¤ë¥¸ ì‚¬ìš©ìë¡œ ë¡œê·¸ì¸í•˜ê¸°\n");
+	printf("5--ì¢…ë£Œí•˜ê¸°\n");
 }
 int load_user_info(INFO user[], int size) {
 	int i, j, k, temp, least;
@@ -111,19 +111,19 @@ int load_user_info(INFO user[], int size) {
 	FILE* fp;
 	fp = fopen("user_data.txt", "r");
 	if (fp == NULL) {
-		fprintf(stderr,"ÆÄÀÏ ¿­±â ½ÇÆĞ\n","user_data.txt");
+		fprintf(stderr,"íŒŒì¼ ì—´ê¸° ì‹¤íŒ¨\n","user_data.txt");
 		return -1;
 	}
 	else
 		for (k = 0; k < SIZE; k++)
 		fscanf(fp, "%d %s %s\n", &user[k].id_num, user[k].id, user[k].password); //ok
 		for (i = 0; i < SIZE - 1; i++) {
-				//ÃÖ¼Ò°ª Ã£±â
+				//ìµœì†Œê°’ ì°¾ê¸°
 			least = i;
 			for (j = i + 1; j < SIZE; j++)
 				if (user[j].id_num < user[least].id_num)							
 					least = j;
-				//±³È¯
+				//êµí™˜
 			temp = user[i].id_num;
 			strcpy(temp1, user[i].id);
 			strcpy(temp2, user[i].password);
@@ -142,10 +142,10 @@ int load_reservation_info(int s[][COLS]) {
 	FILE* fp;
 	fp = fopen("reservation_data.txt", "r");
 	if (fp == NULL) {
-		fprintf(stderr,"ÆÄÀÏ ¿ÀÇÂ ½ÇÆĞ\n","reservation_data.txt");
+		fprintf(stderr,"íŒŒì¼ ì˜¤í”ˆ ì‹¤íŒ¨\n","reservation_data.txt");
 		return -1;
 	}
-	//¿ÀÇÂÇÑ data¸¦ seats¿¡ ³Ö¾îÁÖ±â
+	//ì˜¤í”ˆí•œ dataë¥¼ seatsì— ë„£ì–´ì£¼ê¸°
 	for (i = 0; i < ROWS; i++)
 		for (j = 0; j < COLS; j++) {
 			fscanf(fp, "%d", &s[i][j]);
@@ -156,7 +156,7 @@ int save_reservation_info(int s[][COLS]) {
 	int i, j, k=0;
 	fp = fopen("reservation_data.txt", "r+");
 	if (fp == NULL) {
-		fprintf(stderr, "ÆÄÀÏ ¿ÀÇÂ ½ÇÆĞ\n", "reservation_data.txt");
+		fprintf(stderr, "íŒŒì¼ ì˜¤í”ˆ ì‹¤íŒ¨\n", "reservation_data.txt");
 		return -1;
 	}
 	for (i = 0; i < ROWS; i++) {
@@ -176,15 +176,15 @@ int check_login(INFO user[], char id[], char passwd[]) {
 	int value;
 	value = binary_search(user, SIZE, id);
 	if (value == -1) {
-		printf("ÇØ´ç ¾ÆÀÌµğ°¡ ¾ø½À´Ï´Ù.\n\n");
+		printf("í•´ë‹¹ ì•„ì´ë””ê°€ ì—†ìŠµë‹ˆë‹¤.\n\n");
 		return -1;
 	}
 	else if (strcmp(user[value].password, passwd) != 0) {
-		printf("ÇØ´ç ¾ÆÀÌµğ´Â Á¸ÀçÇÏ³ª ÆĞ½º¿öµå°¡ ´Ù¸§\n\n");
+		printf("í•´ë‹¹ ì•„ì´ë””ëŠ” ì¡´ì¬í•˜ë‚˜ íŒ¨ìŠ¤ì›Œë“œê°€ ë‹¤ë¦„\n\n");
 		return -2;
 	}
 	else {
-		printf("user%d´Ô ¹İ°©½À´Ï´Ù.\n\n", user[value].id_num);
+		printf("user%dë‹˜ ë°˜ê°‘ìŠµë‹ˆë‹¤.\n\n", user[value].id_num);
 		return user[value].id_num;
 	}
 }
@@ -225,26 +225,26 @@ int print_seats(int seats_array[][COLS]) {
 }
 int reserve(int seats_array[][COLS], char row, int col, int id_num) {
 	if (seats_array[row-65][col] == id_num) {
-		printf("ÀÌ¹Ì ¿¹¾àµÈ ÀÚ¸®ÀÔ´Ï´Ù.\n\n");
+		printf("ì´ë¯¸ ì˜ˆì•½ëœ ìë¦¬ì…ë‹ˆë‹¤.\n\n");
 		return -1;
 	}
 	else {
-		printf("¿¹¾à ¿Ï·á\n\n");
+		printf("ì˜ˆì•½ ì™„ë£Œ\n\n");
 		seats_array[row-65][col] = id_num;
 		return seats_array[row-65][col];
 	}
 }
 int cancel(int seats_array[][COLS], char row, int col, int id_num) {
 	if (seats_array[row-65][col] == 0) {
-		printf("¿¹¾àµÇÁö ¾ÊÀº ÀÚ¸®ÀÔ´Ï´Ù.\n\n");
+		printf("ì˜ˆì•½ë˜ì§€ ì•Šì€ ìë¦¬ì…ë‹ˆë‹¤.\n\n");
 		return -1;
 	}
 	else if (seats_array[row-65][col] != id_num) {
-		printf("´Ù¸¥ ¾ÆÀÌµğÀÇ ÁÂ¼®ÀÔ´Ï´Ù.\n\n");
+		printf("ë‹¤ë¥¸ ì•„ì´ë””ì˜ ì¢Œì„ì…ë‹ˆë‹¤.\n\n");
 		return -1;
 	}
 	else {
-		printf("¿¡¾à Ãë¼ÒµÇ¾ú½À´Ï´Ù.\n\n");
+		printf("ì—ì•½ ì·¨ì†Œë˜ì—ˆìŠµë‹ˆë‹¤.\n\n");
 		seats_array[row-65][col] = 0;
 		return seats_array[row-65][col];
 
