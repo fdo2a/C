@@ -17,34 +17,34 @@ int main(void)
 	char buffer[S_SIZE];
 	double score;
 	while (1) {
-		printf("¿µÈ­ Á¦¸ñ(³¡³¯¶§´Â ¿£ÅÍ) :  ");
+		printf("ì˜í™” ì œëª©(ëë‚ ë•ŒëŠ” ì—”í„°) :  ");
 		gets(buffer);
 		if (buffer[0] == '\0')
 			break;
 		p = (NODE*)malloc(sizeof(NODE));
 		strcpy(p->title, buffer);
-		printf("¿µÈ­ ÆòÁ¡ : ");
+		printf("ì˜í™” í‰ì  : ");
 		gets(buffer);
 		score = atof(buffer);
 		p->score = score;
-		if (head == NULL) {//¸®½ºÆ®°¡ ºñ¾î ÀÖÀ¸¸é
-			head = p;	   //»õ·Î¿î ³ëµå¸¦ Ã¹¹øÂ° ³ëµå·Î ¸¸µç´Ù
+		if (head == NULL) {//ë¦¬ìŠ¤íŠ¸ê°€ ë¹„ì–´ ìžˆìœ¼ë©´
+			head = p;	   //ìƒˆë¡œìš´ ë…¸ë“œë¥¼ ì²«ë²ˆì§¸ ë…¸ë“œë¡œ ë§Œë“ ë‹¤
 		}
-		else {//¸®½ºÆ®°¡ ºñ¾îÀÖÁö ¾ÊÀ¸¸é
-			tail->link = p; // »õ·Î¿î ³ëµå¸¦ ÀÌÀü ³ëµåÀÇ ³¡¿¡
+		else {//ë¦¬ìŠ¤íŠ¸ê°€ ë¹„ì–´ìžˆì§€ ì•Šìœ¼ë©´
+			tail->link = p; // ìƒˆë¡œìš´ ë…¸ë“œë¥¼ ì´ì „ ë…¸ë“œì˜ ëì—
 		}
-		p->link = NULL; //»õ·Î¿î ³ëµåÀÇ ¸µÅ© ÇÊµå¸¦ NULL·Î ¼³Á¤
+		p->link = NULL; //ìƒˆë¡œìš´ ë…¸ë“œì˜ ë§í¬ í•„ë“œë¥¼ NULLë¡œ ì„¤ì •
 		tail = p;
 	}//end of while
 
 	printf("================\n");
-	printf("Á¦¸ñ ÆòÁ¡\n");
+	printf("ì œëª© í‰ì \n");
 	printf("================\n");
-	for (p = head; p != NULL; p = p->link) {//¸®½ºÆ®¿¡ µé¾î ÀÖ´Â Á¤º¸¸¦ ¸ðµÎ Ãâ·ÂÇÑ´Ù.
-		printf("Á¦¸ñ : %s, ÆòÁ¡ = %.1lf\n", p->title, p->score);
+	for (p = head; p != NULL; p = p->link) {//ë¦¬ìŠ¤íŠ¸ì— ë“¤ì–´ ìžˆëŠ” ì •ë³´ë¥¼ ëª¨ë‘ ì¶œë ¥í•œë‹¤.
+		printf("ì œëª© : %s, í‰ì  = %.1lf\n", p->title, p->score);
 	}
 	p = head;
-	while (p != NULL) {//µ¿Àû ÇÒ´çÀ» ¹Ý³³ÇÑ´Ù.
+	while (p != NULL) {//ë™ì  í• ë‹¹ì„ ë°˜ë‚©í•œë‹¤.
 		next = p->link;
 		free(p);
 		p = next;
