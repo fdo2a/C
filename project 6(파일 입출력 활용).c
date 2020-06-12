@@ -76,6 +76,7 @@ int main(void)
 			scanf("%c %d", &row, &col);
 			while ((c = getchar()) != '\n' && (c != EOF)) {};
 			cancel(seats, row, col, user[num].id_num);
+			save_reservation_info(seats);
 			print_seats(seats);
 			printf("\n");
 		}
